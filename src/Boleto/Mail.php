@@ -187,9 +187,9 @@ class Mail
                 $transport = $factory->create(new Dsn(
                     $scheme,
                     $config['host'],
-                    $config['username'] ?? null,
-                    $config['password'] ?? null,
-                    ((int) $config['port']) ?? null,
+                    isset($config['username']) ? $config['username']     : null,
+                    isset($config['password']) ? $config['password']     : null,
+                    isset($config['port'])     ? ((int) $config['port']) : null,
                     $config
                 ));
                 $this->mailer = new LaravelBoletoMailer('default', $this->view, $transport);
